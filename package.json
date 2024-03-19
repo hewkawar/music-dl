@@ -1,7 +1,7 @@
 {
-  "name": "@hewkawar/music-dl",
-  "version": "1.0.2",
-  "description": "Music Downloader for NPM Package",
+  "name": "the-music-tools",
+  "version": "1.0.3",
+  "description": "Music Downloader for npmjs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
