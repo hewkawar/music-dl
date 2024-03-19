@@ -1,0 +1,40 @@
+{
+  "name": "music-dl",
+  "version": "1.0.0",
+  "description": "Music Downloader for NPM Package",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup index.ts --format cjs,esm --dts",
+    "release": "pnpm run build && changeset publish",
+    "lint": "tsc",
+    "test": "npm link"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hewkawar/music-dl.git"
+  },
+  "keywords": [
+    "music-dl",
+    "musicdl"
+  ],
+  "author": "HewkawAr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hewkawar/music-dl/issues"
+  },
+  "homepage": "https://github.com/hewkawar/music-dl#readme",
+  "dependencies": {
+    "@types/spotify-web-api-node": "^5.0.11",
+    "axios": "^1.6.8",
+    "spotifydl-core": "^0.2.0",
+    "ytdl-core": "^4.11.5",
+    "ytsr": "^3.8.4"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2"
+  }
+}
