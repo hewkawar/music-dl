@@ -1,6 +1,6 @@
 {
-  "name": "music-dl",
-  "version": "1.0.1",
+  "name": "@hewkawar/music-dl",
+  "version": "1.0.2",
   "description": "Music Downloader for NPM Package",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
