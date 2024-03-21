@@ -1,6 +1,6 @@
 {
   "name": "the-music-tools",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Music Downloader for npmjs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
