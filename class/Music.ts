@@ -6,6 +6,7 @@ import type { SpotifyLoginOptions } from "../interface/Spotify";
 import type SpotifyFetcher from "spotifydl-core/dist/Spotify";
 import ytdl from 'ytdl-core';
 import ytsr from 'ytsr';
+import { MusicErrorType } from "../enum/Error";
 
 export class Music {
     private spotifyApi?: SpotifyWebApi;
@@ -40,6 +41,8 @@ export class Music {
 
             this.spotifyApi.setAccessToken(accessToken);
             this.spotifyDl = new Spotify({ clientId: options.clientId, clientSecret: options.clientSecret });
+        } else {
+            throw new MusicError(MusicErrorType.NotLoginSpotify);
         }
     }
 
@@ -64,7 +67,7 @@ export class Music {
 
             return searchResults
         } else {
-            return undefined
+            throw new MusicError(MusicErrorType.NotLoginSpotify);
         }
     }
 
@@ -80,7 +83,7 @@ export class Music {
 
             return trackInfo
         } else {
-            return undefined
+            throw new MusicError(MusicErrorType.NotLoginSpotify);
         }
     }
 
@@ -90,7 +93,7 @@ export class Music {
 
             return download
         } else {
-            return undefined
+            throw new MusicError(MusicErrorType.NotLoginSpotify);
         }
     }
 
@@ -100,7 +103,7 @@ export class Music {
 
             return buffer
         } else {
-            return undefined
+            throw new MusicError(MusicErrorType.NotLoginSpotify);
         }
     }
 
@@ -135,5 +138,15 @@ export class Music {
         const download = ytdl.downloadFromInfo(videoInfo, { format: format }).pipe(fs.createWriteStream(filename));
 
         return download;
+    }
+}
+
+export class MusicError extends Error {
+    errorCode: MusicErrorType;
+    constructor (code: MusicErrorType) {
+        super();
+        this.errorCode = code;
+
+        if (Error.captureStackTrace) Error.captureStackTrace(this, MusicError);
     }
 }
