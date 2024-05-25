@@ -7,6 +7,7 @@ import type SpotifyFetcher from "spotifydl-core/dist/Spotify";
 import ytdl from 'ytdl-core';
 import ytsr from 'ytsr';
 import { MusicErrorType } from "../enum/Error";
+import { TheSpotifyTools } from "./TheSpotifyTools";
 
 export class Music {
     private spotifyApi?: SpotifyWebApi;
@@ -40,7 +41,7 @@ export class Music {
             const accessToken = await this.makeAccessToken(options.clientId, options.clientSecret);
 
             this.spotifyApi.setAccessToken(accessToken);
-            this.spotifyDl = new Spotify({ clientId: options.clientId, clientSecret: options.clientSecret });
+            this.spotifyDl = new TheSpotifyTools({ clientId: options.clientId, clientSecret: options.clientSecret });
         } else {
             throw new MusicError(MusicErrorType.NotLoginSpotify);
         }
